@@ -6,8 +6,33 @@ public class PrimeSum {
 	public static boolean[] primes; 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		genPrimes(); 
-		
+		genPrimes();
+		int max=0; 
+		for(int i=2; i<10000; i++) {
+			int sum=genSum(i);
+			if(sum>max) {
+				System.out.println(sum);
+			}
+		}
+	}
+	/*
+	 * Takes as an argument the first prime to include in the sume (2, 3, 5 etc) and adds consecutive primes
+	 * returns highest prime value possible with this starting prime
+	 */
+	public static int genSum(int firstPrime) {
+		int sum=0;
+		int index=firstPrime; 
+		while(sum<1000000) {
+			if(primes[index]) {
+				sum+=index;
+				if(sum>1000000) {
+					sum-=index; 
+					break; 
+				}
+			}
+			index++; 
+		}
+		return sum; 
 	}
 	
 	
